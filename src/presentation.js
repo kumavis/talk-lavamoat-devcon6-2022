@@ -141,6 +141,16 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
+        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary" caps>
+            Runtime protections
+          </Heading>
+          <List>
+            <ListItem>prevent packages from corrupting each other</ListItem>
+            <ListItem>per-package control of platform APIs access</ListItem>
+          </List>
+        </Slide>
+
         <Slide transition={['zoom']} bgColor="primary">
           <Image src="./lavamoat-logo.png" height="40vh"></Image>
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
