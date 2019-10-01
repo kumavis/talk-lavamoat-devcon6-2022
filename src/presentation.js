@@ -149,6 +149,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="tertiary">
+          <iframe src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
             Typography
           </Heading>
