@@ -92,12 +92,12 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            what are our options
+          <Heading size={4} textColor="secondary">
+            how to fix?
           </Heading>
           <List>
-            <ListItem>no dependencies</ListItem>
-            <ListItem>audit all deps</ListItem>
+            <ListItem>never use dependencies?</ListItem>
+            <ListItem>audit all dependencies always?</ListItem>
             <ListItem>...a third way?</ListItem>
           </List>
         </Slide>
@@ -121,14 +121,14 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="tertiary">
-          <Heading size={1} textColor="secondary">
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={1} textColor="tertiary">
             Frozen Intrinsics
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="tertiary">
-          <Heading size={6} textColor="secondary">
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={6} textColor="tertiary">
             ( problem, solution )
           </Heading>
         </Slide>
@@ -139,37 +139,57 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="tertiary">
-          <Heading size={6} textColor="secondary">
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={6} textColor="tertiary">
             ( problem, solution )
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="tertiary">
+        <Slide transition={['slide']} bgColor="primary">
           <Heading size={6} textColor="secondary">
-            so how can we apply this to the event-stream incident?
+            how does this solve the event-stream incident?
           </Heading>
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary" caps>
-            Runtime protections
+          <Heading size={6} textColor="secondary">
+            allows runtime protections
           </Heading>
           <List>
-            <ListItem>prevent packages from corrupting each other</ListItem>
-            <ListItem>per-package control of platform APIs access</ListItem>
+            <ListItem>prevent packages from corruption</ListItem>
+            <ListItem>per-package platform API access control</ListItem>
           </List>
         </Slide>
 
-        <Slide transition={['zoom']} bgColor="primary">
-          <Image src="./lavamoat-logo.png" height="40vh"></Image>
-          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-            LavaMoat
+        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            tools for your bundler and environment
           </Heading>
+          <List>
+            <ListItem>lavamoat-browserify</ListItem>
+            <ListItem>lavamoat-viz</ListItem>
+            <br/>
+            coming soon
+            <br/>
+            <br/>
+            <ListItem>lavamoat-webpack</ListItem>
+            <ListItem>lavamoat-rollup</ListItem>
+            <ListItem>lavamoat-node</ListItem>
+          </List>
         </Slide>
 
         <Slide transition={['slide']} bgColor="tertiary">
           <iframe src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="primary">
+          <Image src="./lavamoat-logo.png" height="40vh"></Image>
+          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+          {makeAnimatedText('LavaMoat')}
+          </Heading>
+          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
+            whats between the bad guys and your keys?
+          </Text>
         </Slide>
 
       </Deck>
