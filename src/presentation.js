@@ -25,7 +25,7 @@ require('./app.css')
 const theme = createTheme(
   {
     primary: '#1F2022',
-    secondary: '#03A9FC',
+    secondary: '#b0391e',
     tertiary: 'white',
     quaternary: '#CECECE',
   },
@@ -46,7 +46,7 @@ export default class Presentation extends React.Component {
         <Slide transition={['zoom']} bgColor="primary">
           <Image src="./lavamoat-logo.png" height="40vh"></Image>
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-          {makeAnimatedText()}
+          {makeAnimatedText('LavaMoat')}
           </Heading>
           <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
             whats between the bad guys and your keys?
@@ -65,11 +65,11 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="tertiary">
-          <Heading size={1} textColor="primary">
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={1} textColor="tertiary">
             event-stream
           </Heading>
-          <Heading size={6} textColor="secondary">
+          <Heading size={6} textColor="primary">
             a case study
           </Heading>
         </Slide>
@@ -213,7 +213,7 @@ export default class Presentation extends React.Component {
   }
 }
 
-function makeAnimatedText () {
+function makeAnimatedText (text) {
   return (
     // <div className="lavamoat-title-wrapper">
       <svg className="lavamoat-title" viewBox="0 0 100 20">
@@ -235,8 +235,8 @@ function makeAnimatedText () {
             </path>
           </pattern>
         </defs>
-        <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">LavaMoat</text>
-        <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.2">LavaMoat</text>
+        <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="0.6">{text}</text>
+        <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.2">{text}</text>
       </svg>
     // </div>
   )
