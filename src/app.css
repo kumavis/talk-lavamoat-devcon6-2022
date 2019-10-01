@@ -10,6 +10,10 @@
   margin: 10px 0;
 }
 
+/*
+ * event-stream article anim
+ */
+
 .anim-rotate-left {
   animation: anim-rotate-left 2s;
   animation-fill-mode: forwards;
@@ -38,4 +42,21 @@
   100% {
     transform: rotate(45deg) translate(0px,400px,600px);
   }
+}
+
+/*
+ * animated LavaMoat text
+ */
+.lavamoat-title-wrapper {
+  font-family: 'Cabin Condensed', sans-serif;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+svg.lavamoat-title {
+  font-weight: bold;
+  max-width: 600px;
+  height: auto;
 }
