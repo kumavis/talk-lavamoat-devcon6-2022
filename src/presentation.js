@@ -75,10 +75,20 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="secondary" textColor="primary">
-          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./npm-event-stream.png" height="40vh"></Image>
-          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./event-stream-article-0.png" height="40vh"></Image>
-          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./event-stream-article-1.png" height="40vh"></Image>
-          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./event-stream-article-2.png" height="40vh"></Image>
+          <div className="news-tabs-container">
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./event-stream-article-2.png"></Image>
+            </div>
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./event-stream-article-0.png"></Image>
+            </div>
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./event-stream-article-1.png"></Image>
+            </div>
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./npm-event-stream.png"></Image>
+            </div>
+          </div>
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
