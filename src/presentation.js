@@ -53,7 +53,14 @@ export default class Presentation extends React.Component {
           </Text>
         </Slide>
 
-        <Slide transition={['fade']} bgColor="secondary" textColor="primary">
+        <Slide transition={['slide']} bgColor="secondary" textColor="primary">
+          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./npm-event-stream.png" height="40vh"></Image>
+          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./event-stream-article-0.png" height="40vh"></Image>
+          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./event-stream-article-1.png" height="40vh"></Image>
+          <Image style={{ display: 'inline-flex' }} className="anim-rotate-left" src="./event-stream-article-2.png" height="40vh"></Image>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary" textColor="primary">
           <BlockQuote>
             <Quote>Don't add security, remove insecurity</Quote>
             <Cite>Mark S. Miller</Cite>
@@ -61,7 +68,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
 
-        <Slide transition={['fade']} bgColor="tertiary">
+        <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="primary" caps>
             Typography
           </Heading>

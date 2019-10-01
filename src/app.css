@@ -9,3 +9,33 @@
   line-height: .75;
   margin: 10px 0;
 }
+
+.anim-rotate-left {
+  animation: anim-rotate-left 2s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+@keyframes anim-rotate-left {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    /* transform: rotate(-20deg); */
+    transform: rotate(-8deg) translate(0px,-60px);
+  }
+}
+
+.anim-rotate-right {
+  animation: anim-rotate-right 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes anim-rotate-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg) translate(0px,400px,600px);
+  }
+}
