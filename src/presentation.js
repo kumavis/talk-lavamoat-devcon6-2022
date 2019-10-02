@@ -35,6 +35,52 @@ const theme = createTheme(
   }
 );
 
+
+const KeyCodes = {
+  Down: 40,
+  Up: 38,
+}
+
+class ActionSlide extends Slide {
+
+  static defaultProps = {
+    slideActionMax: Math.Infinity,
+  }
+
+  constructor(props) {
+    super(props)
+    this.handleKeypress = this.handleKeypress.bind(this)
+    this.state.slideActionIndex = 0
+  }
+
+  handleKeypress ({ keyCode }) {
+    const { slideActionMax } = this.props
+    // arrow up/down button should select next/previous list element
+    if (keyCode === KeyCodes.Up) {
+      this.setState(({ slideActionIndex }) => ({
+        slideActionIndex: Math.min(slideActionIndex + 1, slideActionMax)
+      }))
+    } else if (keyCode === KeyCodes.Down) {
+      this.setState(({ slideActionIndex }) => ({
+        slideActionIndex: Math.max(slideActionIndex - 1, 0)
+      }))
+    }
+  }
+
+  componentDidMount () {
+    window.addEventListener('keydown', this.handleKeypress)
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('keydown', this.handleKeypress)
+  }
+
+  render() {
+    const { slideActionIndex } = this.state
+    return <Slide {...this.props} className={`slide-action-${slideActionIndex}`}/>
+  }
+}
+
 export default class Presentation extends React.Component {
   render() {
     return (
@@ -153,6 +199,33 @@ export default class Presentation extends React.Component {
             the event-stream incident
           </Heading>
         </Slide>
+
+        <ActionSlide slideActionMax={3} transition={['slide']} bgColor="secondary">
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div>
+              <Image src="./svg icons/tree.svg" height="150px"></Image>
+              <Heading size={6} textColor="tertiary">
+              deps install
+              </Heading>
+            </div>
+            <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
+            <div>
+              <Image src="./svg icons/cogs.svg" height="150px"></Image>
+              <Heading size={6} textColor="tertiary">
+              build
+              </Heading>
+            </div>
+            <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
+            <div>
+              <Image src="./svg icons/users.svg" height="150px"></Image>
+              <Heading size={6} textColor="tertiary">
+              runtime
+              </Heading>
+            </div>
+            <Image className="evil-icon" src="./svg icons/evil.svg" height="150px"></Image>
+
+          </div>
+        </ActionSlide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary">

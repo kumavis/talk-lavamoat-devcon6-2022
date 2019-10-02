@@ -56,6 +56,7 @@ img.news-tab {
 /*
  * animated LavaMoat text
  */
+
 .lavamoat-title-wrapper {
   font-family: 'Cabin Condensed', sans-serif;
   display:flex;
@@ -68,4 +69,33 @@ svg.lavamoat-title {
   font-weight: bold;
   max-width: 600px;
   height: auto;
+}
+
+/*
+ * animated evil guy
+ */
+
+.evil-icon {
+  position: absolute;
+  transition: all 1.5s;
+}
+
+.slide-action-0 .evil-icon {
+  opacity: 0;
+  transform: rotateX(0deg) translate3d(818px, -160px, 0);
+}
+
+.slide-action-1 .evil-icon {
+  opacity: 1;
+  transform: rotateX(0deg) translate3d(818px, -160px, 0);
+}
+
+.slide-action-2 .evil-icon {
+  opacity: 1;
+  transform: rotateX(360deg) translate3d(455px, -160px, 0);
+}
+
+.slide-action-3 .evil-icon {
+  opacity: 1;
+  transform: rotateX(360deg) translate3d(54px, -160px, 0);
 }
