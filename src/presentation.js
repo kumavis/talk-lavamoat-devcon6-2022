@@ -54,10 +54,10 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary">
-          <Heading size={1} textColor="secondary">
-            security
+          <Heading margin={80} size={1} textColor="secondary">
+            tools for security
           </Heading>
-          <Heading size={3} textColor="secondary">
+          <Heading margin={80} size={4} textColor="secondary">
             for any javascript app
           </Heading>
           <Heading size={6} textColor="tertiary">
@@ -147,7 +147,10 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['slide']} bgColor="primary">
           <Heading size={6} textColor="secondary">
-            how does this solve the event-stream incident?
+            how does this relate to
+          </Heading>
+          <Heading size={6} textColor="tertiary">
+            the event-stream incident
           </Heading>
         </Slide>
 
@@ -180,6 +183,18 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['slide']} bgColor="tertiary">
           <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading fit textColor="primary">
+            2019: LavaMoat is innovative.
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading fit textColor="tertiary">
+          2020: not using LavaMoat is negligent.
+          </Heading>
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary">
