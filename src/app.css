@@ -15,14 +15,11 @@
  */
 
 .news-tabs-container {
-  /* background: green; */
   display: flex;
   justify-content: center;
 }
 
 .news-tab-wrapper {
-  /* background: pink; */
-  /* height: 120px; */
   width: 180px;
 }
 
@@ -43,8 +40,8 @@ img.news-tab {
 
 @keyframes anim-drop-in {
   0% {
-    transform: rotateX(16deg) rotateY(-28deg) translate3d(-230px, -100px, 0);
     opacity: 0;
+    transform: rotateX(16deg) rotateY(-28deg) translate3d(-230px, -100px, 0);
   }
   50% {
     opacity: 1;
