@@ -33,6 +33,7 @@ img.news-tab {
   height: 560px;
   max-width: none;
   max-height: none;
+  box-shadow: -6px 7px 12px 0px #00000091;
 }
 
 .news-tab-wrapper:nth-child(1) > img.news-tab { animation-delay: .25s }
