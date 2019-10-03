@@ -13,13 +13,14 @@ import {
   Slide,
   Text,
   Image,
+  CodePane,
 } from 'spectacle';
 
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
 
 import ActionSlide from './action-slide'
-import FrozenPrimitivesExample from './frozen-primitives'
+import { FrozenPrimitivesExample, FrozenPrimitivesFix, ExplicitEndowmentsExample, ExplicitEndowmentsFix } from './code-examples'
 
 // Require CSS
 require('normalize.css');
@@ -131,6 +132,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <FrozenPrimitivesExample/>
+        <FrozenPrimitivesFix/>
 
         <Slide transition={['slide']} bgColor="secondary">
           <Heading size={1} textColor="tertiary">
@@ -138,10 +140,30 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="secondary">
-          <Heading size={6} textColor="tertiary">
-            ( problem, solution )
+        <ExplicitEndowmentsExample/>
+        <ExplicitEndowmentsFix/>
+
+        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+          {makeAnimatedText('LavaMoat')}
+          <Heading size={6} textColor="secondary">
+            provides runtime protections
           </Heading>
+          <List>
+            <ListItem>basic sanity for instrinsics</ListItem>
+            <ListItem>per-package platform API access control</ListItem>
+            <ListItem>protect packages from corruption</ListItem>
+          </List>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+          {makeAnimatedText('LavaMoat')}
+          <Heading size={6} textColor="secondary">
+            provides configuration tooling
+          </Heading>
+          <List>
+            <ListItem>automatic config generation</ListItem>
+            <ListItem>config insight tools</ListItem>
+          </List>
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary">
@@ -179,16 +201,6 @@ export default class Presentation extends React.Component {
 
           </div>
         </ActionSlide>
-
-        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
-          <Heading size={6} textColor="secondary">
-            allows runtime protections
-          </Heading>
-          <List>
-            <ListItem>prevent packages from corruption</ListItem>
-            <ListItem>per-package platform API access control</ListItem>
-          </List>
-        </Slide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary">
