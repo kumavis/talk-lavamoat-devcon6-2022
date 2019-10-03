@@ -151,7 +151,7 @@ export default class Presentation extends React.Component {
           <List>
             <ListItem>basic sanity for instrinsics</ListItem>
             <ListItem>per-package platform API access control</ListItem>
-            <ListItem>protect packages from corruption</ListItem>
+            <ListItem>protect modules from corruption</ListItem>
           </List>
         </Slide>
 

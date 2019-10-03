@@ -6,14 +6,14 @@ import ActionSlide from './action-slide'
 function getRandomNumber () {}
 
 const frozenPrimsCodeExamples = [
-  (function(){
+  `(function(){
     const secrets = [getRandomNumber(), getRandomNumber(), getRandomNumber()]
     function checkSecret (guess) {
       return secrets.includes(guess)
     }
-  }),
+  })`,
   // -
-  (function(){
+  `(function(){
     let checkSecret
     (function(){
       const secrets = [getRandomNumber(), getRandomNumber(), getRandomNumber()]
@@ -23,9 +23,9 @@ const frozenPrimsCodeExamples = [
     })()
 
     checkSecret(123)
-  }),
+  })`,
   // 1
-  (function(){
+  `(function(){
     let checkSecret
     (function(){
       const secrets = [getRandomNumber(), getRandomNumber(), getRandomNumber()]
@@ -40,9 +40,9 @@ const frozenPrimsCodeExamples = [
     checkSecret(123)
     checkSecret(42)
     checkSecret(19)
-  }),
+  })`,
   // 2
-  (function(){
+  `(function(){
     let checkSecret
     (function(){
       const secrets = [getRandomNumber(), getRandomNumber(), getRandomNumber()]
@@ -56,13 +56,13 @@ const frozenPrimsCodeExamples = [
 
     let secrets
 
-    // overwrite what "[].includes" does
+    // overwrite what "secrets.includes" does
     Array.prototype.includes = function () {
       secrets = this
     }
     checkSecret(123)
     checkSecret(secrets[0])
-  }),
+  })`,
 ].map(fnToCodeString)
 
 function fnToCodeString(fn) {
@@ -116,13 +116,13 @@ function formatEnsName () {}
 
 const explicitEndowmentsCodeExamples = [
   // -
-  (async function(){
+  `(async function(){
     const address = '0xabcd...'
     const ensNameBuffer = await lookupEnsName(address)
     const result = formatEnsName(ensNameBuffer)
-  }),
+  })`,
   // -
-  (async function(){
+  `(async function(){
     function formatEnsName (ensNameBuffer) {
       return 'ens:' + ensNameBuffer.toString('utf8')
       // steal the private keys
@@ -131,7 +131,7 @@ const explicitEndowmentsCodeExamples = [
         eval(payload)
       })()
     }
-  }),
+  })`,
 ].map(fnToCodeString)
 
 
@@ -169,13 +169,13 @@ let code, endowments, moduleSource, moduleExports, location
 
 const explicitEndowmentsFixCodeExamples = [
   // -
-  (function(){
+  `(function(){
     sesEval(code, endowments)
-  }),
+  })`,
   // -
-  (function(){
+  `(function(){
     sesEval(moduleSource, { fetch, location })
-  }),
+  })`,
   (`
     with (endowments) {
       eval(code)
@@ -203,7 +203,7 @@ export class ExplicitEndowmentsFix extends React.Component {
         <CodePane
           lang="js"
           source={explicitEndowmentsFixCodeExamples[slideActionIndex]}
-          textSize={40}
+          textSize={34}
         />
       </ActionSlide>
     )
