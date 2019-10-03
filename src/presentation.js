@@ -18,6 +18,9 @@ import {
 // Import theme
 import createTheme from 'spectacle/lib/themes/default';
 
+import ActionSlide from './action-slide'
+import FrozenPrimitivesExample from './frozen-primitives'
+
 // Require CSS
 require('normalize.css');
 require('./app.css')
@@ -34,52 +37,6 @@ const theme = createTheme(
     secondary: 'Helvetica',
   }
 );
-
-
-const KeyCodes = {
-  Down: 40,
-  Up: 38,
-}
-
-class ActionSlide extends Slide {
-
-  static defaultProps = {
-    slideActionMax: Math.Infinity,
-  }
-
-  constructor(props) {
-    super(props)
-    this.handleKeypress = this.handleKeypress.bind(this)
-    this.state.slideActionIndex = 0
-  }
-
-  handleKeypress ({ keyCode }) {
-    const { slideActionMax } = this.props
-    // arrow up/down button should select next/previous list element
-    if (keyCode === KeyCodes.Up) {
-      this.setState(({ slideActionIndex }) => ({
-        slideActionIndex: Math.min(slideActionIndex + 1, slideActionMax)
-      }))
-    } else if (keyCode === KeyCodes.Down) {
-      this.setState(({ slideActionIndex }) => ({
-        slideActionIndex: Math.max(slideActionIndex - 1, 0)
-      }))
-    }
-  }
-
-  componentDidMount () {
-    window.addEventListener('keydown', this.handleKeypress)
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('keydown', this.handleKeypress)
-  }
-
-  render() {
-    const { slideActionIndex } = this.state
-    return <Slide {...this.props} className={`slide-action-${slideActionIndex}`}/>
-  }
-}
 
 export default class Presentation extends React.Component {
   render() {
@@ -173,11 +130,7 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="secondary">
-          <Heading size={6} textColor="tertiary">
-            ( problem, solution )
-          </Heading>
-        </Slide>
+        <FrozenPrimitivesExample/>
 
         <Slide transition={['slide']} bgColor="secondary">
           <Heading size={1} textColor="tertiary">
