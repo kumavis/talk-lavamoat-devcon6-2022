@@ -59,13 +59,13 @@ export default class Presentation extends React.Component {
 
         <Slide transition={['slide']} bgColor="primary">
           <Heading margin={80} size={1} textColor="secondary">
-            tools for security
+          security tools
           </Heading>
           <Heading margin={80} size={4} textColor="secondary">
             for any javascript app
           </Heading>
           <Heading size={6} textColor="tertiary">
-            but especially dapp UIs + wallets
+            to mitigate software supplychain risks
           </Heading>
         </Slide>
 
