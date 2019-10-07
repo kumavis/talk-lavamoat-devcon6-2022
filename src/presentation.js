@@ -104,16 +104,16 @@ export default class Presentation extends React.Component {
           </BlockQuote>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+        <ActionSlide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={4} textColor="secondary">
             how to fix?
           </Heading>
-          <List>
+          <List className="action-slide-list">
             <ListItem>never use dependencies?</ListItem>
             <ListItem>audit all dependencies always?</ListItem>
             <ListItem>...a third way?</ListItem>
           </List>
-        </Slide>
+        </ActionSlide>
 
         <Slide transition={['slide']} bgColor="secondary" textColor="primary">
           <BlockQuote>
@@ -149,17 +149,19 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+        <ExplicitEndowmentsFix/>
+
+        <ActionSlide transition={['slide']} bgColor="primary" textColor="tertiary">
           {makeAnimatedText('LavaMoat')}
           <Heading size={6} textColor="secondary">
             provides runtime protections
           </Heading>
-          <List>
+          <List className="action-slide-list">
             <ListItem>basic sanity for instrinsics</ListItem>
             <ListItem>per-package platform API access control</ListItem>
             <ListItem>protect modules from corruption</ListItem>
           </List>
-        </Slide>
+        </ActionSlide>
 
         <Slide transition={['slide']} bgColor="primary">
           <Heading size={6} textColor="secondary">
@@ -196,16 +198,16 @@ export default class Presentation extends React.Component {
           </div>
         </ActionSlide>
 
-        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+        <ActionSlide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary">
             to secure the build pipeline:
           </Heading>
-          <List>
+          <List className="action-slide-list">
             <ListItem>deps: yarn install --ignore-scripts</ListItem>
             <ListItem>build: lavamoat-node</ListItem>
             <ListItem>runtime: lavamoat-x plugin for your bundler</ListItem>
           </List>
-        </Slide>
+        </ActionSlide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary">

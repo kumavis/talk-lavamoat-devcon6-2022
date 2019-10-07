@@ -97,3 +97,31 @@ svg.lavamoat-title {
   opacity: 1;
   transform: rotateX(360deg) translate3d(54px, -160px, 0);
 }
+
+/*
+
+Bulleted List
+
+*/
+
+.action-slide-list > li {
+  opacity: 0;
+}
+
+.slide-action-1 .action-slide-list > li:nth-child(1) { opacity: 1; }
+.slide-action-2 .action-slide-list > li:nth-child(1) { opacity: 1; }
+.slide-action-3 .action-slide-list > li:nth-child(1) { opacity: 1; }
+.slide-action-4 .action-slide-list > li:nth-child(1) { opacity: 1; }
+.slide-action-5 .action-slide-list > li:nth-child(1) { opacity: 1; }
+
+.slide-action-2 .action-slide-list > li:nth-child(2) { opacity: 1; }
+.slide-action-3 .action-slide-list > li:nth-child(2) { opacity: 1; }
+.slide-action-4 .action-slide-list > li:nth-child(2) { opacity: 1; }
+.slide-action-5 .action-slide-list > li:nth-child(2) { opacity: 1; }
+
+.slide-action-3 .action-slide-list > li:nth-child(3) { opacity: 1; }
+.slide-action-4 .action-slide-list > li:nth-child(3) { opacity: 1; }
+.slide-action-5 .action-slide-list > li:nth-child(3) { opacity: 1; }
+
+.slide-action-4 .action-slide-list > li:nth-child(4) { opacity: 1; }
+.slide-action-5 .action-slide-list > li:nth-child(4) { opacity: 1; }
