@@ -20,7 +20,7 @@ import {
 import createTheme from 'spectacle/lib/themes/default';
 
 import ActionSlide from './action-slide'
-import { FrozenPrimitivesExample, FrozenPrimitivesFix, ExplicitEndowmentsExample, ExplicitEndowmentsFix } from './code-examples'
+import { FrozenPrimitivesExample, FrozenPrimitivesFix, ExplicitEndowmentsExample, ExplicitEndowmentsFix, ConfigExample } from './code-examples'
 
 // Require CSS
 require('normalize.css');
@@ -95,6 +95,15 @@ export default class Presentation extends React.Component {
           </div>
         </Slide>
 
+        <Slide transition={['slide']} bgColor="secondary" textColor="primary">
+          <BlockQuote>
+            <Quote size={4}>
+              BitPay essentially trusted all the up-stream developers to never inject malicious code into their wallet.
+            </Quote>
+            <Cite>Jackson Palmer (dogecoin)</Cite>
+          </BlockQuote>
+        </Slide>
+
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={4} textColor="secondary">
             how to fix?
@@ -140,9 +149,6 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <ExplicitEndowmentsExample/>
-        <ExplicitEndowmentsFix/>
-
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
           {makeAnimatedText('LavaMoat')}
           <Heading size={6} textColor="secondary">
@@ -155,20 +161,9 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
-          {makeAnimatedText('LavaMoat')}
-          <Heading size={6} textColor="secondary">
-            provides configuration tooling
-          </Heading>
-          <List>
-            <ListItem>automatic config generation</ListItem>
-            <ListItem>config insight tools</ListItem>
-          </List>
-        </Slide>
-
         <Slide transition={['slide']} bgColor="primary">
           <Heading size={6} textColor="secondary">
-            how does this relate to
+            how would this prevent the
           </Heading>
           <Heading size={6} textColor="tertiary">
             the event-stream incident
@@ -198,9 +193,19 @@ export default class Presentation extends React.Component {
               </Heading>
             </div>
             <Image className="evil-icon" src="./svg icons/evil.svg" height="150px"></Image>
-
           </div>
         </ActionSlide>
+
+        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            to secure the build pipeline:
+          </Heading>
+          <List>
+            <ListItem>deps: yarn install --ignore-scripts</ListItem>
+            <ListItem>build: lavamoat-node</ListItem>
+            <ListItem>runtime: lavamoat-x plugin for your bundler</ListItem>
+          </List>
+        </Slide>
 
         <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary">
@@ -208,7 +213,6 @@ export default class Presentation extends React.Component {
           </Heading>
           <List>
             <ListItem>lavamoat-browserify</ListItem>
-            <ListItem>lavamoat-viz</ListItem>
             <br/>
             coming soon
             <br/>
@@ -218,6 +222,19 @@ export default class Presentation extends React.Component {
             <ListItem>lavamoat-node</ListItem>
           </List>
         </Slide>
+
+        <Slide transition={['slide']} bgColor="primary" textColor="tertiary">
+          {makeAnimatedText('LavaMoat')}
+          <Heading size={6} textColor="secondary">
+            provides configuration tooling
+          </Heading>
+          <List>
+            <ListItem>automatic config generation</ListItem>
+            <ListItem>config insight tools</ListItem>
+          </List>
+        </Slide>
+
+        <ConfigExample/>
 
         <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="secondary">
