@@ -258,7 +258,8 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary">
-          <Image src="./lavamoat-logo.png" height="40vh"></Image>
+          {/* <Image src="./lavamoat-logo.png" height="40vh"></Image> */}
+          <Image width={400} src="./form-qr.svg"/>
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
           {makeAnimatedText('LavaMoat')}
           </Heading>
