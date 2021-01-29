@@ -60,9 +60,6 @@ export default class Presentation extends React.Component {
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
           {makeAnimatedText('LavaMoat')}
           </Heading>
-          {/* <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            securing your dependency graph
-          </Text> */}
         </Slide>
 
         <Slide transition={['slide']} bgColor="priamry">
@@ -166,7 +163,7 @@ export default class Presentation extends React.Component {
         {/* <Slide><Image width={1200} src="./lavamoat-diagram.png"/></Slide> */}
 
         <ExplicitEndowmentsExample/>
-        
+
         <ExplicitEndowmentsFix/>
         {/* <CompartmentExplainer/> */}
 
@@ -201,6 +198,25 @@ export default class Presentation extends React.Component {
             npx lavamoat-viz
           </Heading>
           <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            yarn install @lavamoat/allow-scripts
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={1} textColor="primary">
+            future work
+          </Heading>
+        </Slide>
+
+        <Slide transition={['zoom']} bgColor="primary">
+          <Image src="./lavamoat-logo.png" height="40vh"></Image>
+          <Heading size={1} fit caps lineHeight={1} textColor="secondary">
+          {makeAnimatedText('LavaMoat')}
+          </Heading>
         </Slide>
 
         {/* <Slide transition={['slide']} bgColor="primary">
