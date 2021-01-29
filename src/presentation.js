@@ -20,7 +20,15 @@ import {
 import createTheme from 'spectacle/lib/themes/default';
 
 import ActionSlide from './action-slide'
-import { FrozenPrimitivesExample, FrozenPrimitivesFix, ExplicitEndowmentsExample, ExplicitEndowmentsFix, ConfigExample } from './code-examples'
+import { FrozenPrimitivesExample,
+  FrozenPrimitivesFix,
+  ExplicitEndowmentsExample,
+  ExplicitEndowmentsFix,
+  CompartmentExplainer,
+  ConfigExample,
+  LavamoatDiagramSlide,
+  LavaMoatIntroSlide,
+} from './code-examples'
 
 // Require CSS
 require('normalize.css');
@@ -52,11 +60,163 @@ export default class Presentation extends React.Component {
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
           {makeAnimatedText('LavaMoat')}
           </Heading>
-          <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
-            whats between the bad guys and your keys?
-          </Text>
+          {/* <Text margin="10px 0 0" textColor="tertiary" size={1} fit bold>
+            securing your dependency graph
+          </Text> */}
         </Slide>
 
+        <Slide transition={['slide']} bgColor="priamry">
+          <Heading size={1} textColor="tertiary">
+            the javascript commons are our home
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="priamry">
+          <Heading size={1} textColor="tertiary">
+            and i want to protect them
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={1} textColor="primary">
+            from what?
+          </Heading>
+        </Slide>
+
+
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={1} textColor="tertiary">
+            event-stream
+          </Heading>
+          <Heading size={6} textColor="primary">
+            a case study
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary" textColor="primary">
+          <div className="news-tabs-container">
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./event-stream-article-2.png"></Image>
+            </div>
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./event-stream-article-0.png"></Image>
+            </div>
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./event-stream-article-1.png"></Image>
+            </div>
+            <div className="news-tab-wrapper">
+              <Image className="news-tab" src="./npm-event-stream.png"></Image>
+            </div>
+          </div>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary" textColor="primary">
+          <BlockQuote>
+            <Quote size={4}>
+              BitPay essentially trusted all the up-stream developers to never inject malicious code into their wallet.
+            </Quote>
+            <Cite>Jackson Palmer (dogecoin)</Cite>
+          </BlockQuote>
+        </Slide>
+
+        <Slide><Image src="./malicious-anarchy.png"/></Slide>
+
+        <ActionSlide transition={['slide']} bgColor="primary" textColor="tertiary">
+          <Heading size={4} textColor="secondary">
+            how to fix?
+          </Heading>
+          <List className="action-slide-list">
+            <ListItem>never use dependencies?</ListItem>
+            <ListItem>audit all dependencies always?</ListItem>
+            <ListItem>...a third way?</ListItem>
+          </List>
+        </ActionSlide>
+
+        {/* <Slide transition={['slide']} bgColor="primary">
+          <Heading size={1} textColor="secondary">
+            so what can we do about it?
+          </Heading>
+        </Slide> */}
+
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading size={1} textColor="secondary">
+            Agoric/SES
+          </Heading>
+          <Heading size={3} textColor="secondary">
+            (Secure EcmaScript)
+          </Heading>
+          <Heading size={6} textColor="tertiary">
+            a secure runtime for running third-party code safely
+          </Heading>
+        </Slide>
+
+        <FrozenPrimitivesExample/>
+
+        <FrozenPrimitivesFix/>
+
+        {/* <Slide transition={['slide']} bgColor="primary">
+          <Heading size={1} textColor="secondary">
+            Container
+          </Heading>
+          <Heading size={3} textColor="secondary">
+            like require('vm').runInContext() but same Realm
+          </Heading>
+        </Slide> */}
+
+        {/* <Slide><Image width={1200} src="./lavamoat-diagram.png"/></Slide> */}
+
+        <ExplicitEndowmentsExample/>
+        
+        <ExplicitEndowmentsFix/>
+        {/* <CompartmentExplainer/> */}
+
+
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading size={1} textColor="secondary">
+            a look at lavamoat
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading margin={80} size={1} textColor="secondary">
+          security tools
+          </Heading>
+          <Heading margin={80} size={4} textColor="secondary">
+            for any javascript app
+          </Heading>
+          <Heading size={6} textColor="tertiary">
+            to mitigate software supplychain risks
+          </Heading>
+        </Slide>
+
+        <LavaMoatIntroSlide/>
+
+        <LavamoatDiagramSlide/>
+        {/* <Slide><Image width={1200} src="./lavamoat-diagram.png"/></Slide> */}
+
+        <ConfigExample/>
+
+        <Slide transition={['slide']} bgColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            npx lavamoat-viz
+          </Heading>
+          <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
+        </Slide>
+
+        {/* <Slide transition={['slide']} bgColor="primary">
+          <Heading margin={80} size={1} textColor="secondary">
+          security tools
+          </Heading>
+          <Heading margin={80} size={4} textColor="secondary">
+            for any javascript app
+          </Heading>
+          <Heading size={6} textColor="tertiary">
+            to mitigate software supplychain risks
+          </Heading>
+        </Slide> */}
+
+
+        {/*
         <Slide transition={['slide']} bgColor="primary">
           <Heading margin={80} size={1} textColor="secondary">
           security tools
@@ -238,13 +398,6 @@ export default class Presentation extends React.Component {
 
         <ConfigExample/>
 
-        <Slide transition={['slide']} bgColor="tertiary">
-          <Heading size={6} textColor="secondary">
-            lavamoat-viz
-          </Heading>
-          <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
-        </Slide>
-
         <Slide transition={['slide']} bgColor="secondary">
           <Heading fit textColor="primary">
             2019: LavaMoat is innovative.
@@ -258,7 +411,6 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary">
-          {/* <Image src="./lavamoat-logo.png" height="40vh"></Image> */}
           <Image width={400} src="./form-qr.svg"/>
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
           {makeAnimatedText('LavaMoat')}
@@ -267,6 +419,7 @@ export default class Presentation extends React.Component {
             whats between the bad guys and your keys?
           </Text>
         </Slide>
+        */}
 
       </Deck>
     );
