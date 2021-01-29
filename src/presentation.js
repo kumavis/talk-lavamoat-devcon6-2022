@@ -107,6 +107,32 @@ export default class Presentation extends React.Component {
           </div>
         </Slide>
 
+        <ActionSlide slideActionMax={3} transition={['slide']} bgColor="secondary">
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div>
+              <Image src="./svg icons/tree.svg" height="150px"></Image>
+              <Heading size={6} textColor="tertiary">
+              deps install
+              </Heading>
+            </div>
+            <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
+            <div>
+              <Image src="./svg icons/cogs.svg" height="150px"></Image>
+              <Heading size={6} textColor="tertiary">
+              build
+              </Heading>
+            </div>
+            <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
+            <div>
+              <Image src="./svg icons/users.svg" height="150px"></Image>
+              <Heading size={6} textColor="tertiary">
+              runtime
+              </Heading>
+            </div>
+            <Image className="evil-icon" src="./svg icons/evil.svg" height="150px"></Image>
+          </div>
+        </ActionSlide>
+
         <Slide transition={['slide']} bgColor="secondary" textColor="primary">
           <BlockQuote>
             <Quote size={4}>
@@ -200,11 +226,22 @@ export default class Presentation extends React.Component {
           <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
         </Slide>
 
-        <Slide transition={['slide']} bgColor="tertiary">
+        {/* <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="secondary">
             yarn install @lavamoat/allow-scripts
           </Heading>
-        </Slide>
+        </Slide> */}
+
+        <ActionSlide transition={['slide']} bgColor="primary" textColor="tertiary">
+          <Heading size={6} textColor="secondary">
+            to secure the build pipeline:
+          </Heading>
+          <List className="action-slide-list">
+            <ListItem>deps: @lavamoat/allow-scripts</ListItem>
+            <ListItem>build: lavamoat-node</ListItem>
+            <ListItem>runtime: lavamoat-x plugin for your bundler</ListItem>
+          </List>
+        </ActionSlide>
 
         <Slide transition={['slide']} bgColor="secondary">
           <Heading size={1} textColor="primary">

@@ -260,20 +260,23 @@ export class ExplicitEndowmentsFix extends React.Component {
 }
 
 const exampleConfg = `
-"string_decoder": {
+"browser-pack": {
+  "builtin": {
+    "fs.readFileSync": true,
+    "path.join": true,
+    "path.relative": true
+  },
+  "globals": {
+    "__dirname": true,
+    "process.cwd": true
+  },
   "packages": {
-    "safe-buffer": true
-  }
-},
-"strip-hex-prefix": {
-  "packages": {
-    "is-hex-prefixed": true
-  }
-},
-"through": {
-  "packages": {
-    "process": true,
-    "stream-browserify": true
+    "JSONStream": true,
+    "combine-source-map": true,
+    "defined": true,
+    "safe-buffer": true,
+    "through2": true,
+    "umd": true
   }
 },
 `
