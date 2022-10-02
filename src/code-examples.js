@@ -208,28 +208,36 @@ compartment.evaluate(code)
 const compartment = new Compartment({ fetch, location })
 compartment.evaluate(moduleSource)
 `,
+// `
+// // unique globalThis per compartment
+// compartmentA.globalThis !== compartmentB.globalThis
+// // common intrinsics
+// Array === compartment.globalThis.Array
+// `,
+// // vm
+// `
+// // this is almost a Compartment,
+// const vm = require('vm')
+// vm.runInContext(code, endowments)
+
+// // but this is a different Realm, so it suffers
+// // from "Identity Discontinuity"
+// Array !== vm.runInContext('Array')
+// `,
 `
-// unique globalThis per compartment
-compartmentA.globalThis !== compartmentB.globalThis
-// common intrinsics
-Array === compartment.globalThis.Array
+// Compartment shim, simplified
+with (this.scopeController) {
+  // untrusted code goes here
+}
 `,
 `
 // Compartment shim, simplified
-with (new Proxy(endowmentsHandler)) {
-  eval(code)
+with (this.scopeTerminator) {
+  with (this.compartmentGlobal) {
+    // untrusted code goes here
+  }
 }
 `,
-// vm
-`
-// this is almost a Compartment,
-const vm = require('vm')
-vm.runInContext(code, endowments)
-
-// but this is a different Realm, so it suffers
-// from "Identity Discontinuity"
-Array !== vm.runInContext('Array')
-`
 ]
 
 export class ExplicitEndowmentsFix extends React.Component {
