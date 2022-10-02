@@ -131,3 +131,66 @@ Bulleted List
 
 .slide-action-4 .action-slide-list > li:nth-child(4) { opacity: 1; }
 .slide-action-5 .action-slide-list > li:nth-child(4) { opacity: 1; }
+
+
+/* 
+browser chrome
+*/
+
+
+.browser-dot {
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.browser-container {
+  border: 3px solid #f1f1f1;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  font-size: initial;
+  text-align: initial;
+}
+
+/* Container for columns and the top "toolbar" */
+.browser-top {
+  height: 40px;
+  padding: 10px;
+  background: #f1f1f1;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.browser-left {
+  float: left;
+}
+
+.browser-right {
+  float: right;
+}
+
+.browser-middle {
+  width: 75%;
+}
+
+/* Clear floats after the columns */
+.browser-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Three bars (hamburger menu) */
+.browser-bar {
+  width: 17px;
+  height: 3px;
+  background-color: #aaa;
+  margin: 3px 0;
+  display: block;
+}
+
+.browser-content {
+  background: white;
+}

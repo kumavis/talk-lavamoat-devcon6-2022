@@ -233,7 +233,28 @@ export default class Presentation extends React.Component {
           <Heading size={6} textColor="secondary">
             npx lavamoat-viz
           </Heading>
-          <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
+
+          <div class="browser-container">
+            <div class="browser-top">
+              <div class="browser-left">
+                <span class="browser-dot"></span>
+                { " " }
+                <span class="browser-dot"></span>
+                { " " }
+                <span class="browser-dot"></span>
+                { " " }
+              </div>
+              <div class="browser-right">
+                <span class="browser-bar"></span>
+                <span class="browser-bar"></span>
+                <span class="browser-bar"></span>
+              </div>
+            </div>
+
+            <div class="browser-content">
+              <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
+            </div>
+          </div>
         </Slide>
 
         {/* <Slide transition={['slide']} bgColor="tertiary">
