@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/talk-lavamoat-devcon6-2022/precache-manifest.1b80ad2908d48367110e06db17811fc7.js"
+  "/talk-lavamoat-devcon6-2022/precache-manifest.82f9311cfd6a7f7499097a81494e21e8.js"
 );
 
 workbox.clientsClaim();
