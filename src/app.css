@@ -47,13 +47,15 @@ img.news-tab {
 @keyframes anim-drop-in {
   0% {
     opacity: 0;
-    transform: rotateX(16deg) rotateY(-28deg) translate3d(-230px, -100px, 0);
+    /* transform: rotateX(16deg) rotateY(-28deg) translate3d(-230px, -100px, 0); */
+    transform: rotateX(-7deg) rotateY(24deg) translate3d(-120px, -100px, -130px);
   }
   50% {
     opacity: 1;
   }
   100% {
-    transform: rotateX(16deg) rotateY(-28deg) translate3d(-230px, 0, 0);
+    /* transform: rotateX(16deg) rotateY(-28deg) translate3d(-230px, 0, 0); */
+    transform: rotateX(-7deg) rotateY(24deg) translate3d(-120px, 0px, -130px);
   }
 }
 
