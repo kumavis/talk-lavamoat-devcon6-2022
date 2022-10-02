@@ -149,7 +149,7 @@ browser chrome
 }
 
 .browser-container {
-  border: 3px solid #f1f1f1;
+  /* border: 3px solid #f1f1f1; */
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   font-size: initial;

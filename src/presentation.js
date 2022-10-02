@@ -73,23 +73,32 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="priamry">
-          <Heading size={1} textColor="tertiary">
-            the javascript commons are our home
+          <Heading size={4} textColor="tertiary">
+            software supplychain security:
           </Heading>
+          <Heading size={5} textColor="secondary">
+          everything that touches an application or plays a role in its development
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="tertiary">
+          {iframeBrowser({
+            src: "https://www.sonatype.com/resources/vulnerability-timeline",
+            scale: 0.75,
+          })}
         </Slide>
 
         <Slide transition={['slide']} bgColor="priamry">
-          <Heading size={1} textColor="tertiary">
-            and i want to protect them
+          <Heading size={4} textColor="tertiary">
+            javascript supplychain security:
+          </Heading>
+          <Heading size={5} textColor="secondary">
+          your app deps
+          your dep's deps
+          your build system
+          your tools
           </Heading>
         </Slide>
-
-        <Slide transition={['slide']} bgColor="secondary">
-          <Heading size={1} textColor="primary">
-            from what?
-          </Heading>
-        </Slide>
-
 
         <Slide transition={['slide']} bgColor="secondary">
           <Heading size={1} textColor="tertiary">
@@ -234,27 +243,7 @@ export default class Presentation extends React.Component {
             npx lavamoat-viz
           </Heading>
 
-          <div class="browser-container">
-            <div class="browser-top">
-              <div class="browser-left">
-                <span class="browser-dot"></span>
-                { " " }
-                <span class="browser-dot"></span>
-                { " " }
-                <span class="browser-dot"></span>
-                { " " }
-              </div>
-              <div class="browser-right">
-                <span class="browser-bar"></span>
-                <span class="browser-bar"></span>
-                <span class="browser-bar"></span>
-              </div>
-            </div>
-
-            <div class="browser-content">
-              <iframe title="dep-graph viz" src="./dep-graph/index.html" style={{ width: '100%', height: '70vh', border: 0 }}></iframe>
-            </div>
-          </div>
+          {iframeBrowser({ src: './dep-graph/index.html' })}
         </Slide>
 
         {/* <Slide transition={['slide']} bgColor="tertiary">
@@ -541,5 +530,44 @@ function makeAnimatedText (text) {
         <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="1">{text}</text>
       </svg>
     // </div>
+  )
+}
+
+function iframeBrowser ({ src, scale = 1}) {
+  return (
+    <div class="browser-container">
+      <div class="browser-top">
+        <div class="browser-left">
+          <span class="browser-dot"></span>
+          { " " }
+          <span class="browser-dot"></span>
+          { " " }
+          <span class="browser-dot"></span>
+          { " " }
+        </div>
+        <div class="browser-right">
+          <span class="browser-bar"></span>
+          <span class="browser-bar"></span>
+          <span class="browser-bar"></span>
+        </div>
+      </div>
+
+      <div class="browser-content"
+        style={{
+          height: '70vh',
+        }}>
+        <iframe
+          src={src}
+          style={{
+            width: `${100/scale}%`,
+            height: `${100/scale}%`,
+            transform: `scale(${scale})`,
+            transformOrigin: 'top left',
+            border: 0,
+          }}
+          frameBorder="0"
+        />
+      </div>
+    </div>
   )
 }
