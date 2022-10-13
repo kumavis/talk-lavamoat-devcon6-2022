@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d06e17f902993d0f29ce",
+    "revision": "364edc19ec9473788a7d",
     "url": "/talk-lavamoat-devcon6-2022/static/css/main.04bdacb9.chunk.css"
   },
   {
-    "revision": "d06e17f902993d0f29ce",
-    "url": "/talk-lavamoat-devcon6-2022/static/js/main.d06e17f9.chunk.js"
+    "revision": "364edc19ec9473788a7d",
+    "url": "/talk-lavamoat-devcon6-2022/static/js/main.364edc19.chunk.js"
   },
   {
     "revision": "d243de199ea1fdc0fe66",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/talk-lavamoat-devcon6-2022/static/js/runtime~main.439cb02e.js"
   },
   {
-    "revision": "ff784051b038f48af0aa1644c99c30f6",
+    "revision": "eafcf4a2bab0aeb4c7b353f22273688b",
     "url": "/talk-lavamoat-devcon6-2022/index.html"
   }
 ];
