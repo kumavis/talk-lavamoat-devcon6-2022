@@ -68,10 +68,11 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary">
+          <Image src="./kumavis-avatar.jpg" height="30vh" className="" />
           <Heading size={4} textColor="tertiary">
-            hi i'm @kumavis_
+            hi i'm @kumavis
           </Heading>
-          founded metamask, security research team lead
+          founder metamask, security research team lead
         </Slide>
 
         <Slide transition={['zoom']} bgColor="primary">
@@ -113,6 +114,7 @@ export default class Presentation extends React.Component {
           {iframeBrowser({
             src: "https://www.sonatype.com/resources/vulnerability-timeline",
             scale: 0.75,
+            fallbackImg: './screenshot-sonatype.png',
           })}
         </Slide>
         {/* 
@@ -134,6 +136,7 @@ export default class Presentation extends React.Component {
           {iframeBrowser({
             src: 'https://insights.stackoverflow.com/survey/2021#most-popular-technologies-language',
             scale: 0.75,
+            fallbackImg: './screenshot-stackoverflow.png',
           })}
         </Slide>
 
@@ -149,6 +152,29 @@ export default class Presentation extends React.Component {
             <ListItem>your tools</ListItem>
           </List>
         </Slide>
+
+        <Slide transition={['slide']} bgColor="primary">
+          <CodePane
+            lang="js"
+            source={`
+  "dependencies": {
+    "core-js": "^2.4.1",
+    "hammerjs": "^2.0.8",
+    "reselect": "^3.0.0",
+    "rxjs": "^5.1.0",
+    "ts-helpers": "^1.1.1",
+    "zone.js": "^0.8.4"
+  }
+            `}
+            textSize={20}
+            className="deps-json"
+          />
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="primary">
+          <Image src="./npm-graph.png" height="70vh" className="" />
+        </Slide>
+
 
         <Slide transition={['slide']} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
@@ -243,11 +269,7 @@ export default class Presentation extends React.Component {
         </Slide>
         
         <Slide transition={['slide']} bgColor="primary">
-          <CodePane
-            lang="bash"
-            source={'\nyarn add ses\n'}
-            textSize={26}
-          />
+          <Image src="./yarn-install-ses.png" height="30vh" className="" />
         </Slide>
 
         <FrozenPrimitivesExample/>
@@ -310,7 +332,7 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <LavamoatDiagramSlide />
+        {/* <LavamoatDiagramSlide /> */}
 
         <LavaMoatIntroSlide />
 
@@ -325,11 +347,15 @@ export default class Presentation extends React.Component {
           {iframeBrowser({ src: './dep-graph/index.html' })}
         </Slide>
 
-        {/* <Slide transition={['slide']} bgColor="tertiary">
+        <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="secondary">
-            yarn install @lavamoat/allow-scripts
+            npx lavamoat-viz
           </Heading>
-        </Slide> */}
+          {iframeBrowser({
+            src: './dep-graph/index.html',
+            fallbackImg: './screenshot-lavamoat-viz.png',
+          })}
+        </Slide>
 
         <ActionSlide transition={['slide']} bgColor="secondary" textColor="tertiary">
           <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -425,7 +451,12 @@ function makeAnimatedText(text) {
   )
 }
 
-function iframeBrowser({ src, scale = 1 }) {
+function iframeBrowser({ src, scale = 1, fallbackImg, }) {
+  if (fallbackImg) {
+    return (
+      <Image src={fallbackImg}/>
+    )
+  }
   return (
     <div class="browser-container">
       <div class="browser-top">
