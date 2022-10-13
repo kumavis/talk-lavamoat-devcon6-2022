@@ -58,7 +58,7 @@ export default class Presentation extends React.Component {
         theme={theme}
       >
         <Slide transition={['zoom']} bgColor="primary">
-          <Image src="./lavamoat-logo-new.svg" height="60vh" className="lavamoat-logo"/>
+          <Image src="./lavamoat-logo-new.svg" height="60vh" className="lavamoat-logo" />
           <Heading size={1} fit caps lineHeight={0} textColor="secondary">
             {makeAnimatedText('LavaMoat')}
           </Heading>
@@ -67,19 +67,45 @@ export default class Presentation extends React.Component {
           </Text>
         </Slide>
 
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading size={4} textColor="tertiary">
+            hi i'm @kumavis_
+          </Heading>
+          founded metamask, security research team lead
+        </Slide>
+
         <Slide transition={['zoom']} bgColor="primary">
-          <h1>
-          The Attacker is Inside:
-          </h1>
-          Javascript Supplychain Security and LavaMoat 
+          <Heading size={4} textColor="secondary">
+            The Attacker is Inside:
+          </Heading>
+          Javascript Supplychain Security and LavaMoat
+        </Slide>
+
+        <Slide transition={['zoom']} bgColor="primary">
+          <Image src="./lavamoat-logo-new.svg" height="60vh" className="lavamoat-logo" />
+          <Heading size={1} fit caps lineHeight={0} textColor="secondary">
+            {makeAnimatedText('LavaMoat')}
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading margin={80} size={1} textColor="secondary">
+            security tools
+          </Heading>
+          <Heading margin={80} size={4} textColor="secondary">
+            for any javascript app
+          </Heading>
+          <Heading size={6} textColor="tertiary">
+            to mitigate software supplychain risks
+          </Heading>
         </Slide>
 
         <Slide transition={['slide']} bgColor="priamry">
           <Heading size={4} textColor="tertiary">
-            software supplychain security:
+            software supplychain:
           </Heading>
           <Heading size={5} textColor="secondary">
-          everything that touches an application or plays a role in its development
+            everything that touches an application or plays a role in its development
           </Heading>
         </Slide>
 
@@ -89,7 +115,7 @@ export default class Presentation extends React.Component {
             scale: 0.75,
           })}
         </Slide>
-
+        {/* 
         <ActionSlide transition={['slide']} bgColor="primary" textColor="tertiary">
           <Heading size={4} textColor="secondary">
             why is javascript targeted so often?
@@ -99,11 +125,11 @@ export default class Presentation extends React.Component {
             <ListItem>ambient authority</ListItem>
             <ListItem>everything is mutable</ListItem>
           </List>
-        </ActionSlide>
+        </ActionSlide> */}
 
         <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="primary">
-            its popular!
+            why? its popular!
           </Heading>
           {iframeBrowser({
             src: 'https://insights.stackoverflow.com/survey/2021#most-popular-technologies-language',
@@ -111,26 +137,17 @@ export default class Presentation extends React.Component {
           })}
         </Slide>
 
-        <Slide transition={['slide']} bgColor="secondary">
-          <Heading size={5} textColor="primary">
-            mischievous thinking caps on...
-          </Heading>
-        </Slide>
-
-        <AmbientAuthorityExample />
-
-        <FrozenPrimitivesExample/>
-
         <Slide transition={['slide']} bgColor="primary">
           <Heading size={4} textColor="tertiary">
-            javascript supplychain security:
+            javascript supplychain:
           </Heading>
-          <Heading size={5} textColor="secondary">
-          your app deps
-          your dep's deps
-          your build system
-          your tools
-          </Heading>
+          <List>
+            <ListItem>npm dependencies!</ListItem>
+            <ListItem>your app's deps</ListItem>
+            <ListItem>your dep's deps</ListItem>
+            <ListItem>your bundler</ListItem>
+            <ListItem>your tools</ListItem>
+          </List>
         </Slide>
 
         <Slide transition={['slide']} bgColor="secondary">
@@ -164,21 +181,21 @@ export default class Presentation extends React.Component {
             <div>
               <Image src="./svg icons/tree.svg" height="150px"></Image>
               <Heading size={6} textColor="tertiary">
-              deps install
+                deps install
               </Heading>
             </div>
             <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
             <div>
               <Image src="./svg icons/cogs.svg" height="150px"></Image>
               <Heading size={6} textColor="tertiary">
-              build
+                build
               </Heading>
             </div>
             <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
             <div>
               <Image src="./svg icons/users.svg" height="150px"></Image>
               <Heading size={6} textColor="tertiary">
-              runtime
+                runtime
               </Heading>
             </div>
             <Image className="evil-icon" src="./svg icons/evil.svg" height="150px"></Image>
@@ -224,8 +241,18 @@ export default class Presentation extends React.Component {
             tools for running third-party code safely
           </Heading>
         </Slide>
+        
+        <Slide transition={['slide']} bgColor="primary">
+          <CodePane
+            lang="bash"
+            source={'\nyarn add ses\n'}
+            textSize={26}
+          />
+        </Slide>
 
-        <FrozenPrimitivesFix/>
+        <FrozenPrimitivesExample/>
+
+        <FrozenPrimitivesFix />
 
         {/* <Slide transition={['slide']} bgColor="primary">
           <Heading size={1} textColor="secondary">
@@ -240,19 +267,21 @@ export default class Presentation extends React.Component {
 
         {/* <ExplicitEndowmentsExample/> */}
 
-        <ExplicitEndowmentsFix/>
+        <AmbientAuthorityExample />
+
+        <ExplicitEndowmentsFix />
         {/* <CompartmentExplainer/> */}
 
 
-        <Slide transition={['slide']} bgColor="primary">
+        {/* <Slide transition={['slide']} bgColor="primary">
           <Heading size={1} textColor="secondary">
             a look at lavamoat
           </Heading>
-        </Slide>
+        </Slide> */}
 
-        <Slide transition={['slide']} bgColor="primary">
+        {/* <Slide transition={['slide']} bgColor="primary">
           <Heading margin={80} size={1} textColor="secondary">
-          security tools
+            security tools
           </Heading>
           <Heading margin={80} size={4} textColor="secondary">
             for any javascript app
@@ -260,24 +289,34 @@ export default class Presentation extends React.Component {
           <Heading size={6} textColor="tertiary">
             to mitigate software supplychain risks
           </Heading>
+        </Slide> */}
+
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading size={4} textColor="tertiary">
+            building blocks:
+          </Heading>
+          <List>
+            <ListItem>lockdown()</ListItem>
+            <ListItem>Compartment</ListItem>
+          </List>
         </Slide>
 
         <Slide transition={['slide']} bgColor="primary">
           <Heading margin={80} size={1} textColor="secondary">
-          LavaMoat kernel
+            LavaMoat
           </Heading>
           <Heading margin={80} size={4} textColor="tertiary">
             wraps packages in Compartments
           </Heading>
         </Slide>
 
-        <LavamoatDiagramSlide/>
+        <LavamoatDiagramSlide />
 
-        <LavaMoatIntroSlide/>
+        <LavaMoatIntroSlide />
 
         {/* <Slide><Image width={1200} src="./lavamoat-diagram.png"/></Slide> */}
 
-        <ConfigExample/>
+        <ConfigExample />
 
         <Slide transition={['slide']} bgColor="tertiary">
           <Heading size={6} textColor="secondary">
@@ -297,21 +336,21 @@ export default class Presentation extends React.Component {
             <div>
               <Image src="./svg icons/tree.svg" height="150px"></Image>
               <Heading size={6} textColor="tertiary">
-              deps install
+                deps install
               </Heading>
             </div>
             <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
             <div>
               <Image src="./svg icons/cogs.svg" height="150px"></Image>
               <Heading size={6} textColor="tertiary">
-              build
+                build
               </Heading>
             </div>
             <Image src="./svg icons/arrow-right2.svg" height="150px"></Image>
             <div>
               <Image src="./svg icons/users.svg" height="150px"></Image>
               <Heading size={6} textColor="tertiary">
-              runtime
+                runtime
               </Heading>
             </div>
           </div>
@@ -325,16 +364,25 @@ export default class Presentation extends React.Component {
           </List>
         </ActionSlide>
 
-        <Slide transition={['slide']} bgColor="secondary">
+        <Slide transition={['slide']} bgColor="primary">
+          <Heading size={5} textColor="tertiary">
+            now protecting tens of millions of users at metamask
+          </Heading>
+        </Slide>
+
+        <Slide transition={['slide']} bgColor="secondary" textColor="primary">
           <Heading size={2} textColor="primary">
             we need your help
+          </Heading>
+          <Heading size={6} textColor="primary">
+            github.com/lavamoat/lavamoat
           </Heading>
         </Slide>
 
         <Slide transition={['zoom']} bgColor="primary">
-          <Image src="./lavamoat-logo-new.svg" height="60vh" className="lavamoat-logo"/>
+          <Image src="./lavamoat-logo-new.svg" height="60vh" className="lavamoat-logo" />
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
-          {makeAnimatedText('LavaMoat')}
+            {makeAnimatedText('LavaMoat')}
           </Heading>
           <Text textColor="tertiary" textSize="1.5em">
             javascript supplychain security
@@ -346,48 +394,48 @@ export default class Presentation extends React.Component {
   }
 }
 
-function makeAnimatedText (text) {
+function makeAnimatedText(text) {
   return (
     // <div className="lavamoat-title-wrapper">
-      <svg className="lavamoat-title" viewBox="0 0 100 20">
-        <defs>
-          <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
-            {/* <stop offset="5%" stop-color="red"/>
+    <svg className="lavamoat-title" viewBox="0 0 100 20">
+      <defs>
+        <linearGradient id="gradient" x1="0" x2="0" y1="0" y2="1">
+          {/* <stop offset="5%" stop-color="red"/>
             <stop offset="95%" stop-color="orange"/> */}
-            <stop offset="5%" stop-color="#e10a44"/>
-            <stop offset="95%" stop-color="#ef9232"/>
-          </linearGradient>
-          <pattern id="wave" x="0" y="0" width="120" height="20" patternUnits="userSpaceOnUse">
-            <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)">
-              <animateTransform
-                  attributeName="transform"
-                  begin="0s"
-                  dur="6s"
-                  type="translate"
-                  from="0,0"
-                  to="40,0"
-                  repeatCount="indefinite" />
-            </path>
-          </pattern>
-        </defs>
-        <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.5">{text}</text>
-        <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)"  fill-opacity="1">{text}</text>
-      </svg>
+          <stop offset="5%" stop-color="#e10a44" />
+          <stop offset="95%" stop-color="#ef9232" />
+        </linearGradient>
+        <pattern id="wave" x="0" y="0" width="120" height="20" patternUnits="userSpaceOnUse">
+          <path id="wavePath" d="M-40 9 Q-30 7 -20 9 T0 9 T20 9 T40 9 T60 9 T80 9 T100 9 T120 9 V20 H-40z" mask="url(#mask)" fill="url(#gradient)">
+            <animateTransform
+              attributeName="transform"
+              begin="0s"
+              dur="6s"
+              type="translate"
+              from="0,0"
+              to="40,0"
+              repeatCount="indefinite" />
+          </path>
+        </pattern>
+      </defs>
+      <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#gradient)" fill-opacity="0.5">{text}</text>
+      <text text-anchor="middle" x="50" y="15" font-size="17" fill="url(#wave)" fill-opacity="1">{text}</text>
+    </svg>
     // </div>
   )
 }
 
-function iframeBrowser ({ src, scale = 1}) {
+function iframeBrowser({ src, scale = 1 }) {
   return (
     <div class="browser-container">
       <div class="browser-top">
         <div class="browser-left">
           <span class="browser-dot"></span>
-          { " " }
+          {" "}
           <span class="browser-dot"></span>
-          { " " }
+          {" "}
           <span class="browser-dot"></span>
-          { " " }
+          {" "}
         </div>
         <div class="browser-right">
           <span class="browser-bar"></span>
@@ -403,8 +451,8 @@ function iframeBrowser ({ src, scale = 1}) {
         <iframe
           src={src}
           style={{
-            width: `${100/scale}%`,
-            height: `${100/scale}%`,
+            width: `${100 / scale}%`,
+            height: `${100 / scale}%`,
             transform: `scale(${scale})`,
             transformOrigin: 'top left',
             border: 0,

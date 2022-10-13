@@ -8,69 +8,67 @@ import lavamoatConfig from './example-config.json'
 function getRandomNumber () {}
 
 const frozenPrimsCodeExamples = [
+`
+  // anyone can modify base functionality
+  Array.prototype.map = () => { /* ... */ }
+
+`,
 // `
-
-//   // anyone can modify base functionality
-//   Array.prototype.map = () => { /* ... */ }
-
-
+// const secrets = Array(3).fill().map(getRandomNumber)
+// function checkSecret (guess) {
+//   return secrets.includes(guess)
+// }
 // `,
-`
-const secrets = Array(3).fill().map(getRandomNumber)
-function checkSecret (guess) {
-  return secrets.includes(guess)
-}
-`,
-// -
-`
-let checkSecret
-{
-  const secrets = Array(3).fill().map(getRandomNumber)
-  checkSecret = (guess) => {
-    return secrets.includes(guess)
-  }
-}
+// // -
+// `
+// let checkSecret
+// {
+//   const secrets = Array(3).fill().map(getRandomNumber)
+//   checkSecret = (guess) => {
+//     return secrets.includes(guess)
+//   }
+// }
 
-checkSecret(123)
-`,
-// 1
-`
-let checkSecret
-{
-  const secrets = Array(3).fill().map(getRandomNumber)
-  let attempts = 0
-  checkSecret = (guess) => {
-    attempts++
-    if (attempts > 3) throw new Error('No more guesses!')
-    return secrets.includes(guess)
-  }
-}
+// checkSecret(123)
+// `,
+// // 1
+// `
+// let checkSecret
+// {
+//   const secrets = Array(3).fill().map(getRandomNumber)
+//   let attempts = 0
+//   checkSecret = (guess) => {
+//     attempts++
+//     if (attempts > 3) throw new Error('No more guesses!')
+//     return secrets.includes(guess)
+//   }
+// }
 
-// how to get secret??
-checkSecret(123)
-checkSecret(42)
-checkSecret(19)
-`,
-// 2
-`
-let checkSecret
-{
-  const secrets = Array(3).fill().map(getRandomNumber)
-  let attempts = 0
-  checkSecret = (guess) => {
-    attempts++
-    if (attempts > 3) throw new Error('No more guesses!')
-    return secrets.includes(guess)
-  }
-}
+// // how to get secret??
+// checkSecret(123)
+// checkSecret(42)
+// checkSecret(19)
+// `,
+// // 2
+// `
+// let checkSecret
+// {
+//   const secrets = Array(3).fill().map(getRandomNumber)
+//   let attempts = 0
+//   checkSecret = (guess) => {
+//     attempts++
+//     if (attempts > 3) throw new Error('No more guesses!')
+//     return secrets.includes(guess)
+//   }
+// }
 
-// answer: overwrite what "secrets.includes" does
-let stolenSecrets
-Array.prototype.includes = function () {
-  stolenSecrets = this
-}
-checkSecret()
-`,
+// // answer: overwrite what "secrets.includes" does
+// let stolenSecrets
+// Array.prototype.includes = function () {
+//   stolenSecrets = this
+// }
+// checkSecret()
+// `,
 ]
 
 export class FrozenPrimitivesExample extends React.Component {
@@ -96,7 +94,7 @@ export class FrozenPrimitivesExample extends React.Component {
         <CodePane
           lang="js"
           source={frozenPrimsCodeExamples[slideActionIndex]}
-          textSize={26}
+          textSize={32}
         />
       </ActionSlide>
     )
@@ -107,7 +105,7 @@ export class FrozenPrimitivesFix extends React.Component {
   render () {
     const source = 
 `
-// SES-shim provides
+// SES provides
 lockdown()
 
 // prevent modifications to intrinsics
@@ -209,10 +207,11 @@ compartment.evaluate(code)
 `
 // expose only explicit endowments to code
 const compartment = new Compartment({ fetch, location })
-compartment.evaluate(moduleSource)
+compartment.evaluate(code)
 `,
 `
 // with statement
+
 const obj = { abc: 1, xyz: 'hello'}
 
 with (obj) {
@@ -222,72 +221,29 @@ with (obj) {
 `,
 `
 // proxy
+
 const obj = new Proxy({}, {
+  // access hooks
+  has: (target, prop) => {
+    return true
+  }
   get: (target, prop) => {
     if (prop === 'abc') return 1
     if (prop === 'xyz') return 'hello'
   },
-  has: (target, prop) => {
-    return true
-  }
+  // ...
 })
 `,
 `
-// Compartment shim, simplified
-with (this.scopeControllerProxy) {
+// control the scope
+with (scopeControllerProxy) {
   // untrusted code goes here
 }
 `,
 `
-// Compartment shim, simplified
-with (this.scopeTerminator) {
-  with (this.compartmentGlobal) {
+with (scopeTerminatorProxy) { // disallow access
+  with (allowedGlobals) { // expose globals
     // untrusted code goes here
-  }
-}
-`,
-`
-// Compartment shim, simplified
-with (this.scopeTerminator) {
-  with (this.compartmentGlobal) {
-    (function(){
-      "use strict"
-      // untrusted code goes here
-    })()
-  }
-}
-`,
-`
-// part of lockdown
-Function.prototype.constructor = function () {
-  throw new Error('nope')
-}
-
-// Compartment shim, simplified
-with (this.scopeTerminator) {
-  with (this.compartmentGlobal) {
-    (function(){
-      "use strict"
-      // untrusted code goes here
-    })()
-  }
-}
-`,
-`
-// part of lockdown
-Function.prototype.constructor = function () {
-  throw new Error('nope')
-}
-
-// Compartment shim, simplified
-with (this.scopeTerminator) {
-  with (this.compartmentGlobal) {
-    with (this.allowEvalOnce) {
-      (function(){
-        "use strict"
-        eval(code)
-      })()
-    }
   }
 }
 `,
@@ -295,6 +251,51 @@ with (this.scopeTerminator) {
 // block ambient authority with Compartments 
 const compartment = new Compartment(endowments)
 compartment.evaluate(code)
+`,
+`
+// Compartment shim, simplified
+with (scopeTerminator) {
+  with (compartmentGlobal) {
+    (function(){
+      "use strict"
+      // untrusted code goes here
+    })()
+  }
+}
+`,
+`
+// part of lockdown
+Function.prototype.constructor = function () {
+  throw new Error('nope')
+}
+
+// Compartment shim, simplified
+with (scopeTerminator) {
+  with (compartmentGlobal) {
+    (function(){
+      "use strict"
+      // untrusted code goes here
+    })()
+  }
+}
+`,
+`
+// part of lockdown
+Function.prototype.constructor = function () {
+  throw new Error('nope')
+}
+
+// Compartment shim, simplified
+with (scopeTerminator) {
+  with (compartmentGlobal) {
+    with (allowEvalOnce) {
+      (function(){
+        "use strict"
+        eval(code)
+      })()
+    }
+  }
+}
 `,
 // vm
 `
